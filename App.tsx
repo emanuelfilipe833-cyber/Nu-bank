@@ -41,7 +41,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto min-h-screen flex flex-col relative bg-white pb-24">
+    <div className="max-w-md mx-auto min-h-screen flex flex-col relative bg-black pb-24 text-white">
       {/* Header section */}
       <header className="nubank-purple p-6 pb-12 text-white">
         <div className="flex justify-between items-center mb-8">
@@ -60,22 +60,22 @@ const App: React.FC = () => {
       </header>
 
       {/* Account Balance Section */}
-      <div className="p-6 cursor-pointer -mt-6 bg-white rounded-t-3xl border-b border-gray-100 flex flex-col gap-1">
+      <div className="p-6 cursor-pointer -mt-6 bg-black rounded-t-3xl border-b border-zinc-900 flex flex-col gap-1">
         <div className="flex justify-between items-center">
           <span className="text-lg font-semibold">Conta</span>
-          <ChevronRight className="text-gray-400 w-5 h-5" />
+          <ChevronRight className="text-zinc-600 w-5 h-5" />
         </div>
         <div className="mt-2">
           {showBalance ? (
             <span className="text-2xl font-bold">R$ {balance.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
           ) : (
-            <div className="h-8 w-40 bg-gray-200 rounded-md animate-pulse"></div>
+            <div className="h-8 w-40 bg-zinc-800 rounded-md animate-pulse"></div>
           )}
         </div>
       </div>
 
       {/* Quick Actions Scroll */}
-      <div className="p-6 flex gap-4 overflow-x-auto no-scrollbar">
+      <div className="p-6 flex gap-4 overflow-x-auto no-scrollbar bg-black">
         <QuickAction icon={<QrCode className="w-6 h-6" />} label="Área Pix" />
         <QuickAction icon={<ArrowUpCircle className="w-6 h-6" />} label="Pagar" />
         <QuickAction icon={<ArrowDownCircle className="w-6 h-6" />} label="Transferir" />
@@ -87,9 +87,9 @@ const App: React.FC = () => {
 
       {/* My Cards Shortcut */}
       <div className="px-6 mb-6">
-        <div className="bg-gray-100 p-4 rounded-xl flex items-center gap-4 cursor-pointer hover:bg-gray-200 transition-colors">
-          <CreditCard className="w-6 h-6" />
-          <span className="font-semibold text-sm">Meus cartões</span>
+        <div className="bg-zinc-900 p-4 rounded-xl flex items-center gap-4 cursor-pointer hover:bg-zinc-800 transition-colors">
+          <CreditCard className="w-6 h-6 text-zinc-300" />
+          <span className="font-semibold text-sm text-zinc-100">Meus cartões</span>
         </div>
       </div>
 
@@ -98,18 +98,18 @@ const App: React.FC = () => {
         icon={<CreditCard className="w-6 h-6" />} 
         title="Cartão de Crédito"
       >
-        <p className="text-gray-500 mb-2">Fatura atual</p>
-        <p className="text-2xl font-bold">R$ 1.240,50</p>
-        <p className="text-sm text-gray-400 mt-1">Limite disponível de R$ 8.500,00</p>
+        <p className="text-zinc-500 mb-2">Fatura atual</p>
+        <p className="text-2xl font-bold text-white">R$ 1.240,50</p>
+        <p className="text-sm text-zinc-600 mt-1">Limite disponível de R$ 8.500,00</p>
       </InfoCard>
 
       <InfoCard 
         icon={<TrendingUp className="w-6 h-6" />} 
         title="Investimentos"
       >
-        <p className="text-sm text-gray-500">Seu dinheiro está rendendo 100% do CDI.</p>
-        <div className="mt-4 p-3 bg-purple-50 rounded-lg flex items-center gap-3">
-          <div className="bg-purple-100 p-2 rounded-full">
+        <p className="text-sm text-zinc-500">Seu dinheiro está rendendo 100% do CDI.</p>
+        <div className="mt-4 p-3 bg-purple-900/20 rounded-lg flex items-center gap-3 border border-purple-900/30">
+          <div className="bg-purple-900/40 p-2 rounded-full">
             <Sparkles className="nubank-text-purple w-5 h-5" />
           </div>
           <span className="text-sm font-medium nubank-text-purple">Conheça o Planejador IA</span>
@@ -120,46 +120,46 @@ const App: React.FC = () => {
         icon={<ShieldCheck className="w-6 h-6" />} 
         title="Seguros"
       >
-        <p className="text-sm text-gray-500">Proteção para você e seus bens.</p>
+        <p className="text-sm text-zinc-500">Proteção para você e seus bens.</p>
       </InfoCard>
 
       <InfoCard 
         icon={<ShoppingBag className="w-6 h-6" />} 
         title="Shopping"
       >
-        <p className="text-sm text-gray-500">Vantagens e cashback nas melhores lojas.</p>
+        <p className="text-sm text-zinc-500">Vantagens e cashback nas melhores lojas.</p>
       </InfoCard>
 
       {/* Floating AI Assistant Button */}
       <button 
         onClick={() => setIsAssistantOpen(true)}
-        className="fixed bottom-6 right-6 w-16 h-16 nubank-purple rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-105 active:scale-95 transition-all z-40"
+        className="fixed bottom-24 right-6 w-16 h-16 nubank-purple rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-105 active:scale-95 transition-all z-40 border border-white/10"
       >
         <MessageSquare className="w-8 h-8" />
-        <div className="absolute -top-1 -right-1 bg-red-500 w-4 h-4 rounded-full border-2 border-white"></div>
+        <div className="absolute -top-1 -right-1 bg-red-500 w-4 h-4 rounded-full border-2 border-black"></div>
       </button>
 
       {/* AI Assistant Modal */}
       {isAssistantOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex flex-col justify-end">
-          <div className="bg-white h-[85vh] rounded-t-3xl flex flex-col animate-slide-up">
-            <div className="p-6 border-b flex justify-between items-center">
+        <div className="fixed inset-0 bg-black/80 z-50 flex flex-col justify-end backdrop-blur-sm">
+          <div className="bg-zinc-900 h-[85vh] rounded-t-3xl flex flex-col animate-slide-up border-t border-zinc-800">
+            <div className="p-6 border-b border-zinc-800 flex justify-between items-center bg-zinc-900 rounded-t-3xl">
               <div className="flex items-center gap-2">
                 <Sparkles className="nubank-text-purple w-6 h-6" />
-                <h3 className="text-lg font-bold">Assistente Olá</h3>
+                <h3 className="text-lg font-bold text-white">Assistente Olá</h3>
               </div>
-              <button onClick={() => setIsAssistantOpen(false)} className="p-2 bg-gray-100 rounded-full">
+              <button onClick={() => setIsAssistantOpen(false)} className="p-2 bg-zinc-800 rounded-full text-zinc-400">
                 <X className="w-6 h-6" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50 no-scrollbar">
+            <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-zinc-950 no-scrollbar">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[80%] p-4 rounded-2xl text-sm ${
                     msg.role === 'user' 
-                      ? 'bg-purple-600 text-white rounded-tr-none' 
-                      : 'bg-white text-gray-800 shadow-sm rounded-tl-none border border-gray-100'
+                      ? 'bg-purple-700 text-white rounded-tr-none' 
+                      : 'bg-zinc-800 text-zinc-100 shadow-sm rounded-tl-none border border-zinc-700'
                   }`}>
                     {msg.text}
                   </div>
@@ -167,29 +167,29 @@ const App: React.FC = () => {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex gap-2">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce [animation-delay:-.3s]"></div>
-                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce [animation-delay:-.5s]"></div>
+                  <div className="bg-zinc-800 p-4 rounded-2xl shadow-sm border border-zinc-700 flex gap-2">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce [animation-delay:-.3s]"></div>
+                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce [animation-delay:-.5s]"></div>
                   </div>
                 </div>
               )}
               <div ref={chatEndRef} />
             </div>
 
-            <div className="p-6 border-t flex gap-2 bg-white">
+            <div className="p-6 border-t border-zinc-800 flex gap-2 bg-zinc-900">
               <input 
                 type="text" 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Pergunte sobre seus gastos..."
-                className="flex-1 bg-gray-100 p-4 rounded-xl outline-none focus:ring-2 focus:ring-purple-200"
+                className="flex-1 bg-zinc-800 text-white p-4 rounded-xl outline-none focus:ring-2 focus:ring-purple-900/50 placeholder-zinc-500 border border-zinc-700"
               />
               <button 
                 onClick={handleSendMessage}
                 disabled={!input.trim() || isLoading}
-                className="w-14 h-14 nubank-purple flex items-center justify-center rounded-xl text-white disabled:opacity-50"
+                className="w-14 h-14 nubank-purple flex items-center justify-center rounded-xl text-white disabled:opacity-50 shadow-lg"
               >
                 <Send className="w-6 h-6" />
               </button>
@@ -198,21 +198,21 @@ const App: React.FC = () => {
         </div>
       )}
 
-      {/* Tab Bar (Mock) */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-gray-100 max-w-md mx-auto h-20 flex justify-around items-center px-4 z-30">
+      {/* Tab Bar */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-xl border-t border-zinc-900 max-w-md mx-auto h-20 flex justify-around items-center px-4 z-30">
         <div className="flex flex-col items-center gap-1 nubank-text-purple">
           <ArrowUpCircle className="w-6 h-6" />
           <span className="text-[10px] font-bold">Início</span>
         </div>
-        <div className="flex flex-col items-center gap-1 text-gray-400">
+        <div className="flex flex-col items-center gap-1 text-zinc-600">
           <BarChart3 className="w-6 h-6" />
           <span className="text-[10px] font-bold">Histórico</span>
         </div>
-        <div className="flex flex-col items-center gap-1 text-gray-400">
+        <div className="flex flex-col items-center gap-1 text-zinc-600">
           <ShoppingBag className="w-6 h-6" />
           <span className="text-[10px] font-bold">Shopping</span>
         </div>
-        <div className="flex flex-col items-center gap-1 text-gray-400">
+        <div className="flex flex-col items-center gap-1 text-zinc-600">
           <Heart className="w-6 h-6" />
           <span className="text-[10px] font-bold">Vida</span>
         </div>
@@ -224,7 +224,7 @@ const App: React.FC = () => {
           to { transform: translateY(0); }
         }
         .animate-slide-up {
-          animation: slide-up 0.3s ease-out;
+          animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
       `}</style>
     </div>
