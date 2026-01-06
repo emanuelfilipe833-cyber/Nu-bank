@@ -1,0 +1,7 @@
+{
+  "name": "Olá, Emanuel - Finanças",
+  "description": "Uma experiência bancária moderna inspirada no Nubank, com assistente financeiro inteligente alimentado por IA.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
