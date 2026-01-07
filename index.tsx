@@ -10,3 +10,12 @@ if (!rootElement) {
 
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
+// Remove o loading screen do HTML quando o React carregar
+const loader = document.getElementById('loading-screen');
+if (loader) {
+  setTimeout(() => {
+    loader.style.opacity = '0';
+    setTimeout(() => loader.remove(), 500);
+  }, 500);
+}
