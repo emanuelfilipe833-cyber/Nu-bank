@@ -2,15 +2,7 @@
 import { GoogleGenAI } from "@google/genai";
 
 export const getFinancialAdvice = async (userPrompt: string, balance: number) => {
-  // Verificação de segurança para evitar erro de 'process is undefined' ou chave nula
-  const apiKey = typeof process !== 'undefined' && process.env?.API_KEY ? process.env.API_KEY : '';
-  
-  if (!apiKey) {
-    console.warn("API_KEY não encontrada no ambiente.");
-    return "Oi Emanuel! Para eu te dar dicas financeiras, preciso que a chave da IA esteja configurada. Mas posso te dizer que seu saldo de R$ " + balance.toLocaleString('pt-BR') + " é um ótimo começo!";
-  }
-
-  const ai = new GoogleGenAI({ apiKey });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
   
   try {
     const response = await ai.models.generateContent({
@@ -23,7 +15,7 @@ export const getFinancialAdvice = async (userPrompt: string, balance: number) =>
       },
     });
     
-    return response.text || "Estou pensando em uma resposta melhor...";
+    return response.text;
   } catch (error) {
     console.error("Erro ao chamar Gemini:", error);
     return "Desculpe, Emanuel. Tive um pequeno problema técnico agora. Pode tentar novamente em instantes?";

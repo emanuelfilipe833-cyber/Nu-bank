@@ -1,21 +1,16 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
+import App from './App';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
-  throw new Error("Não foi possível encontrar o elemento root para montar o app.");
+  throw new Error("Could not find root element to mount to");
 }
 
 const root = ReactDOM.createRoot(rootElement);
-root.render(<App />);
-
-// Remove o loading screen do HTML quando o React carregar
-const loader = document.getElementById('loading-screen');
-if (loader) {
-  setTimeout(() => {
-    loader.style.opacity = '0';
-    setTimeout(() => loader.remove(), 500);
-  }, 500);
-}
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
