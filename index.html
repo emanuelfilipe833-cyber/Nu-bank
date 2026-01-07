@@ -3,7 +3,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Olá, Emanuel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -12,11 +12,16 @@
             font-family: 'Inter', sans-serif;
             -webkit-tap-highlight-color: transparent;
             background-color: #000000;
+            color: #ffffff;
         }
-        .nubank-purple { background-color: #820ad1; }
-        .nubank-text-purple { color: #a33df2; }
+        .nu-purple { background-color: #820ad1; }
+        .nu-text-purple { color: #820ad1; }
+        .nu-card { background-color: #121212; border-radius: 16px; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Smooth transitions */
+        .transition-all { transition: all 0.3s ease; }
     </style>
 <script type="importmap">
 {
@@ -30,7 +35,7 @@
 }
 </script>
 </head>
-<body class="bg-black text-white">
+<body class="antialiased">
     <div id="root"></div>
 </body>
 </html>
