@@ -2,7 +2,8 @@
 import { GoogleGenAI } from "@google/genai";
 
 export const getFinancialAdvice = async (userPrompt: string, balance: number) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  // Initialize with process.env.API_KEY directly as required by the coding guidelines.
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   try {
     const response = await ai.models.generateContent({
@@ -15,6 +16,7 @@ export const getFinancialAdvice = async (userPrompt: string, balance: number) =>
       },
     });
     
+    // Use .text property to get the generated content.
     return response.text;
   } catch (error) {
     console.error("Erro ao chamar Gemini:", error);
